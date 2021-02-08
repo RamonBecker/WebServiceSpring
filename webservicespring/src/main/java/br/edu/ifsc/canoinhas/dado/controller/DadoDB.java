@@ -1,7 +1,9 @@
-package br.edu.ifsc.canoinhas.dado.entidade;
+package br.edu.ifsc.canoinhas.dado.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import br.edu.ifsc.canoinhas.dado.entidade.Dado;
 
 public class DadoDB {
 
