@@ -1,6 +1,7 @@
 package br.edu.ifsc.canoinhas.dado.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,12 @@ public class DadoController {
 		return DadoDB.getInstance().getDadosMap();
 	}
 
+	@RequestMapping(value = "/dado/ultimo", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Dado utlimoDado() {
+		return DadoDB.getInstance().recuperarUltimoDado();
+	}
+
 	@RequestMapping(value = "/dado/busca", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Dado buscaDado(@RequestParam(value = "id", defaultValue = "0") Integer id) {
@@ -41,6 +48,12 @@ public class DadoController {
 	@ResponseBody
 	public Dado dado(@PathVariable Integer id) {
 		return DadoDB.getInstance().buscaDado(id);
+	}
+
+	@RequestMapping(value = "/dado/buscahora/{hora}", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public HashMap<Integer, Dado> hora(@PathVariable String hora) {
+		return DadoDB.getInstance().recuperarDadoHora(hora);
 	}
 
 	@RequestMapping(value = "/dado/adiciona", method = RequestMethod.POST, // MESMA IDEIA PARA O PUT
@@ -63,7 +76,7 @@ public class DadoController {
 			return "Erro";
 		}
 	}
-	
+
 	@RequestMapping(value = "/dado/apaga", method = RequestMethod.DELETE)
 	@ResponseBody
 	public String apagaDado(@RequestParam(value = "id", defaultValue = "0") Integer id) {

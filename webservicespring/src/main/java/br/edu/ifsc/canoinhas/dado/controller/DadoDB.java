@@ -33,6 +33,22 @@ public class DadoDB {
 		dadosMap.remove(id);
 	}
 
+	public synchronized Dado recuperarUltimoDado() {
+		return dadosMap.get(dadosMap.size() - 1);
+	}
+
+	public synchronized HashMap<Integer, Dado> recuperarDadoHora(String hora) {
+		HashMap<Integer, Dado> listaHora = new HashMap<Integer, Dado>();
+
+		for (Integer id : dadosMap.keySet()) {
+			Dado dado = dadosMap.get(id);
+			if (dado.getHora().contains(hora)) {
+				listaHora.put(dado.getId(), dado);
+			}
+		}
+		return listaHora;
+	}
+
 	public Map<Integer, Dado> getDadosMap() {
 		if (dadosMap == null) {
 			dadosMap = new HashMap<Integer, Dado>();

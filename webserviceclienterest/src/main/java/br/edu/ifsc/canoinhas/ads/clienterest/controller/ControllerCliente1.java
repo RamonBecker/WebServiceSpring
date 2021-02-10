@@ -1,4 +1,4 @@
-package br.edu.ifsc.canoinhas.ads.clienterest;
+package br.edu.ifsc.canoinhas.ads.clienterest.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-public class ControllerDado implements Runnable {
+public class ControllerCliente1 implements Runnable {
 
 	private Random gerador;
 	private int id;
@@ -24,7 +24,7 @@ public class ControllerDado implements Runnable {
 	private String dataFormatada;
 	private String horaFormatada;
 
-	public ControllerDado() {
+	public ControllerCliente1() {
 		this.gerador = new Random();
 		this.formatadorData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 		this.formatadorHora = DateTimeFormatter.ofPattern("HH:mm");
